@@ -154,6 +154,7 @@ Twenty Twenty-One is distributed under the terms of the GNU GPL.
 
 	/* Colors */
 	--global--color-black: #000;
+	--global--color-header: burlywood;
 	--global--color-dark-gray: #28303d;
 	--global--color-gray: #39414d;
 	--global--color-light-gray: #f0f0f0;
@@ -169,7 +170,7 @@ Twenty Twenty-One is distributed under the terms of the GNU GPL.
 	--global--color-primary: var(--global--color-dark-gray); /* Body text color, site title, footer text color. */
 	--global--color-secondary: var(--global--color-gray); /* Headings */
 	--global--color-primary-hover: var(--global--color-primary);
-	--global--color-background: var(--global--color-green); /* Mint, default body background */
+	--global--color-background: #eee; /* Mint, default body background */
 	--global--color-border: var(--global--color-primary); /* Used for borders (separators) */
 
 	/* Spacing */
@@ -705,13 +706,18 @@ template {
 .pagination,
 .comments-pagination,
 .post-navigation,
-.site-footer,
-.site-header,
 .alignwide,
 .wide-max-width {
 	max-width: var(--responsive--alignwide-width);
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.site-footer,
+.site-header{
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 var(--responsive--spacing-horizontal);
 }
 
 .alignfull,
@@ -793,6 +799,7 @@ template {
 .site-header {
 	padding-top: calc(0.75 * var(--global--spacing-vertical));
 	padding-bottom: calc(2 * var(--global--spacing-vertical));
+	background-color: var(--global--color-header);
 }
 @media only screen and (min-width: 482px) {
 
@@ -894,6 +901,10 @@ template {
 	margin-top: calc(0.666 * var(--global--spacing-vertical));
 	margin-bottom: calc(0.666 * var(--global--spacing-vertical));
 }
+.site-footer{
+	background-color: var(--global--color-header);
+}
+
 @media only screen and (min-width: 482px) {
 
 	.site-footer > *,
@@ -3627,6 +3638,17 @@ table.wp-calendar-table caption {
 	margin-top: 0;
 }
 
+/* child page navbar style */
+ul.wpb_page_list {
+	width: 20rem;
+    list-style: none;
+    list-style-type: none;
+    background-color: #eee;
+    border: 1px solid #CCC;
+    padding: 20px;
+	margin-right: var(--responsive--spacing-horizontal) !important;
+}
+
 /**
  * .alignwide
  */
@@ -3942,9 +3964,8 @@ table.wp-calendar-table caption {
 }
 
 .singular .entry-header {
-	border-bottom: 3px solid var(--global--color-border);
-	padding-bottom: calc(2 * var(--global--spacing-vertical));
-	margin-bottom: calc(3 * var(--global--spacing-vertical));
+	/* padding-bottom: calc(2 * var(--global--spacing-vertical)); */
+	margin-bottom: calc(2 * var(--global--spacing-vertical));
 }
 
 .home .entry-header {
@@ -3981,7 +4002,6 @@ table.wp-calendar-table caption {
 
 .entry-title {
 	color: var(--entry-header--color);
-	font-size: var(--entry-header--font-size);
 	letter-spacing: var(--heading--letter-spacing-h2);
 	line-height: var(--heading--line-height-h2);
 	overflow-wrap: break-word;
@@ -4006,6 +4026,7 @@ table.wp-calendar-table caption {
 
 .singular .entry-title {
 	font-size: var(--global--font-size-page-title);
+	font-size: var(--entry-header--font-size);
 }
 
 h1.entry-title {
